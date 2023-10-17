@@ -6,7 +6,6 @@ import 'package:flutterapp1/screens/auth/sign_in.dart';
 import 'package:flutterapp1/shared/constants.dart';
 import 'package:flutterapp1/shared/loading.dart';
 
-import 'package:flutterapp1/utils/app_layout.dart';
 import 'package:flutterapp1/utils/app_styles.dart';
 
 import 'package:go_router/go_router.dart';
@@ -36,7 +35,7 @@ class _SignUpState extends State<SignUp> {
                 child: ListView(
                   children: [
                     Container(
-                      height: AppLayout.getHeight(230),
+                      height: 230,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.cover,
@@ -56,39 +55,39 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(30),
+                    const SizedBox(
+                      height: 30,
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: AppLayout.getWidth(15)),
+                      padding: const EdgeInsets.only(left: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Sign up",
+                            "Đăng kí",
                             style: Styles.headline1,
                           ),
                           Text(
-                            "Create your account here",
+                            "Tạo tài khoản của bạn ở đây",
                             style: Styles.textStyle1,
                           )
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(30),
+                    const SizedBox(
+                      height: 30,
                     ),
                     Align(
                       child: Container(
-                        height: AppLayout.getHeight(40),
-                        width: AppLayout.getScreenWidth() * 0.9,
+                        height: 40,
+                        width: MediaQuery.of(context).size.width * 0.9,
                         decoration: boxDecoration,
                         child: TextFormField(
                           onChanged: (value) {
                             email = value;
                           },
                           validator: (value) =>
-                              value!.isEmpty ? "Enter your email" : null,
+                              value!.isEmpty ? "Nhập email" : null,
                           obscureText: false,
                           decoration: textInputDecoration.copyWith(
                             prefixIcon: const Icon(Icons.email),
@@ -97,39 +96,39 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(24),
+                    const SizedBox(
+                      height: 24,
                     ),
                     Align(
                       child: Container(
-                        height: AppLayout.getHeight(40),
-                        width: AppLayout.getScreenWidth() * 0.9,
+                        height: 40,
+                        width: MediaQuery.of(context).size.width * 0.9,
                         decoration: boxDecoration,
                         child: TextFormField(
                           onChanged: (value) {
                             password = value;
                           },
                           validator: (value) => value!.length < 6
-                              ? "Your password need to be longer than 6"
+                              ? "Mật khẩu của bạn cần dài hơn 6 kí tự"
                               : null,
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(
                             prefixIcon: const Icon(Icons.lock),
-                            hintText: "Password",
+                            hintText: "Mật khẩu",
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(24),
+                    const SizedBox(
+                      height: 24,
                     ),
                     Align(
                       child: Container(
                         decoration: const BoxDecoration(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
-                        height: AppLayout.getHeight(50),
-                        width: AppLayout.getWidth(120),
+                        height: 50,
+                        width: 120,
                         child: ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
@@ -142,24 +141,24 @@ class _SignUpState extends State<SignUp> {
                             loading = false;
                           },
                           child: Text(
-                            "Sign up",
+                            "Đăng kí",
                             style: Styles.headline2,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(60),
+                    const SizedBox(
+                      height: 60,
                     ),
                     Align(
                       alignment: Alignment.center,
                       child: Container(
-                        padding: EdgeInsets.only(right: AppLayout.getWidth(25)),
+                        padding: const EdgeInsets.only(right: 25),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Already have an account! ",
+                              "Bạn đã có tài khoản! ",
                               style: Styles.textStyle1,
                             ),
                             InkWell(
@@ -167,7 +166,7 @@ class _SignUpState extends State<SignUp> {
                                 context.go(context.namedLocation("sign_in"));
                               },
                               child: Text(
-                                "Go back",
+                                "Đăng nhập",
                                 style: Styles.textStyle1
                                     .copyWith(color: Colors.black),
                               ),

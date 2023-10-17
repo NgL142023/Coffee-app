@@ -3,7 +3,7 @@ import 'package:flutterapp1/models/app_user.dart';
 import 'package:flutterapp1/services/database.dart';
 
 import 'package:flutterapp1/shared/loading.dart';
-import 'package:flutterapp1/utils/app_layout.dart';
+
 import 'package:flutterapp1/utils/app_styles.dart';
 import 'package:provider/provider.dart';
 
@@ -34,45 +34,45 @@ class _ShowSettingsState extends State<ShowSettings> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Name:"),
-                    SizedBox(
-                      height: AppLayout.getHeight(4),
+                    const Text("Tên:"),
+                    const SizedBox(
+                      height: 4,
                     ),
                     TextFormField(
                       initialValue: snapshot.data!.name,
                       validator: (value) =>
-                          value!.isEmpty ? "Enter your name" : null,
+                          value!.isEmpty ? "Nhập tên của bạn" : null,
                       onChanged: (value) => setState(
                         () {
                           _currentName = value;
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(30),
+                    const SizedBox(
+                      height: 30,
                     ),
-                    const Text("Sugars:"),
-                    SizedBox(
-                      height: AppLayout.getHeight(4),
+                    const Text("Số lượng đường:"),
+                    const SizedBox(
+                      height: 4,
                     ),
                     DropdownButtonFormField(
                       value: snapshot.data!.sugar,
                       items: sugars.map((sugar) {
                         return DropdownMenuItem(
                           value: sugar,
-                          child: Text("$sugar sugars"),
+                          child: Text("$sugar viên"),
                         );
                       }).toList(),
                       onChanged: (value) => setState(() {
                         _currentSugar = value as String;
                       }),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(30),
+                    const SizedBox(
+                      height: 30,
                     ),
-                    const Text("Strength:"),
-                    SizedBox(
-                      height: AppLayout.getHeight(4),
+                    const Text("Độ mạnh:"),
+                    const SizedBox(
+                      height: 4,
                     ),
                     Slider(
                         min: 100,
@@ -82,7 +82,7 @@ class _ShowSettingsState extends State<ShowSettings> {
                             .blue[_currentStrength ?? snapshot.data!.strength],
                         inactiveColor: Colors
                             .blue[_currentStrength ?? snapshot.data!.strength],
-                        label: "Strength",
+                        label: "Độ mạnh",
                         value: _currentStrength?.toDouble() ??
                             snapshot.data!.strength.toDouble(),
                         onChanged: (value) {
@@ -90,13 +90,13 @@ class _ShowSettingsState extends State<ShowSettings> {
                             _currentStrength = value.round();
                           });
                         }),
-                    SizedBox(
-                      height: AppLayout.getHeight(30),
+                    const SizedBox(
+                      height: 30,
                     ),
                     Center(
                       child: Container(
-                        height: AppLayout.getHeight(50),
-                        width: AppLayout.getWidth(150),
+                        height: 50,
+                        width: 150,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(15),
@@ -116,7 +116,7 @@ class _ShowSettingsState extends State<ShowSettings> {
                           },
                           child: Center(
                             child: Text(
-                              "Update",
+                              "Cập nhật",
                               style: Styles.textStyle2,
                             ),
                           ),

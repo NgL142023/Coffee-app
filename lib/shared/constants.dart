@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp1/utils/app_layout.dart';
+
 import 'package:flutterapp1/utils/app_styles.dart';
 
 final textInputDecoration = InputDecoration(
-  contentPadding: EdgeInsets.only(top: AppLayout.getHeight(14)),
+  contentPadding: const EdgeInsets.only(top: 14),
   hintStyle: Styles.textStyle1.copyWith(fontSize: 15, color: Colors.grey),
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(20),

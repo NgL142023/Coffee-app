@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp1/models/brew.dart';
-import 'package:flutterapp1/utils/app_layout.dart';
 
 class BrewTile extends StatelessWidget {
   final Brew brew;
@@ -9,7 +8,7 @@ class BrewTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: AppLayout.getHeight(8)),
+      padding: const EdgeInsets.only(top: 8),
       child: Card(
         margin: const EdgeInsets.all(20),
         child: ListTile(

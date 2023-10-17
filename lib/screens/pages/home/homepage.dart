@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
       value: DatabaseService().brews,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("HomePage"),
+          title: const Text("Trang chủ"),
           elevation: 0,
           actions: [
             ElevatedButton.icon(
@@ -33,14 +33,14 @@ class HomePage extends StatelessWidget {
                 await AuthServices().signOut();
               },
               icon: const Icon(Icons.person),
-              label: const Text("Logout"),
+              label: const Text("Đăng xuất"),
             ),
             ElevatedButton.icon(
               onPressed: () {
                 showBottomSheet();
               },
               icon: const Icon(Icons.settings),
-              label: const Text("Settings"),
+              label: const Text("Cài đặt"),
             ),
           ],
         ),

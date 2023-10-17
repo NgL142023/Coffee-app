@@ -5,7 +5,6 @@ import 'package:flutterapp1/screens/pages/home/homepage.dart';
 import 'package:flutterapp1/shared/constants.dart';
 import 'package:flutterapp1/shared/loading.dart';
 
-import 'package:flutterapp1/utils/app_layout.dart';
 import 'package:flutterapp1/utils/app_styles.dart';
 
 import 'package:go_router/go_router.dart';
@@ -34,7 +33,7 @@ class _SignInState extends State<SignIn> {
                 child: ListView(
                   children: [
                     Container(
-                      height: AppLayout.getHeight(230),
+                      height: 230,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.cover,
@@ -42,40 +41,40 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(12),
+                    const SizedBox(
+                      height: 12,
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
-                        padding: EdgeInsets.only(left: AppLayout.getWidth(12)),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Hello",
+                              "Xin chào",
                               style: Styles.headline1,
                             ),
                             Text(
-                              "Sign in to your account",
+                              "Đăng nhập tài khoản",
                               style: Styles.textStyle1,
                             )
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(30),
+                    const SizedBox(
+                      height: 30,
                     ),
                     Align(
                       child: Container(
-                        height: AppLayout.getHeight(40),
-                        width: AppLayout.getScreenWidth() * 0.9,
+                        height: 40,
+                        width: MediaQuery.of(context).size.width * 0.9,
                         decoration: boxDecoration,
                         child: TextFormField(
                           obscureText: false,
                           validator: (value) =>
-                              value!.isEmpty ? "enter your email" : null,
+                              value!.isEmpty ? "Nhập email của bạn" : null,
                           onChanged: (value) {
                             email = value;
                           },
@@ -86,38 +85,38 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(24),
+                    const SizedBox(
+                      height: 24,
                     ),
                     Align(
                       child: Container(
-                        height: AppLayout.getHeight(40),
-                        width: AppLayout.getScreenWidth() * 0.9,
+                        height: 40,
+                        width: MediaQuery.of(context).size.width * 0.9,
                         decoration: boxDecoration,
                         child: TextFormField(
                             obscureText: true,
                             validator: (value) =>
-                                value!.length < 6 ? "too short" : null,
+                                value!.length < 6 ? "Mật khẩu quá ngắn" : null,
                             onChanged: (value) {
                               password = value;
                             },
                             decoration: textInputDecoration.copyWith(
-                                hintText: "Password",
+                                hintText: "Mật khẩu",
                                 prefixIcon: const Icon(Icons.lock))),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(24),
+                    const SizedBox(
+                      height: 24,
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Container(
-                        padding: EdgeInsets.only(right: AppLayout.getWidth(25)),
+                        padding: const EdgeInsets.only(right: 25),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "Don't have an account? ",
+                              "Chưa có tài khoản? ",
                               style: Styles.textStyle1,
                             ),
                             InkWell(
@@ -125,7 +124,7 @@ class _SignInState extends State<SignIn> {
                                 context.go(context.namedLocation("sign_up"));
                               },
                               child: Text(
-                                "Create",
+                                "Tạo tài khoản",
                                 style: Styles.textStyle1
                                     .copyWith(color: Colors.black),
                               ),
@@ -134,16 +133,16 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(25),
+                    const SizedBox(
+                      height: 25,
                     ),
                     Align(
                       child: Container(
                         decoration: const BoxDecoration(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
-                        height: AppLayout.getHeight(50),
-                        width: AppLayout.getWidth(120),
+                        height: 50,
+                        width: 120,
                         child: ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
@@ -158,14 +157,14 @@ class _SignInState extends State<SignIn> {
                             });
                           },
                           child: Text(
-                            "Sign in",
+                            "Đăng nhập",
                             style: Styles.headline2,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppLayout.getHeight(60),
+                    const SizedBox(
+                      height: 60,
                     ),
                     Align(
                       alignment: Alignment.center,
@@ -178,7 +177,7 @@ class _SignInState extends State<SignIn> {
                           loading = false;
                         },
                         child: Text(
-                          "Sign in Anonymous",
+                          "Đăng nhập ẩn danh",
                           style: Styles.headline1,
                         ),
                       ),
