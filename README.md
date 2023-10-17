@@ -1,4 +1,4 @@
-Phần mềm chạy trên Android giúp người dùng order cafe /n
+Phần mềm chạy trên Android giúp người dùng order cafe 
 
 Chức năng:
 Đăng nhập/đăng kí (email/ẩn danh)
