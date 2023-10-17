@@ -1,4 +1,5 @@
-Phần mềm chạy trên Android giúp người dùng order cafe
+Phần mềm chạy trên Android giúp người dùng order cafe /n
+
 Chức năng:
 Đăng nhập/đăng kí (email/ẩn danh)
 Oder coffee ( Chọn độ mạnh, độ ngọt)
