@@ -6,7 +6,7 @@ class DatabaseService {
   final String? uid;
   DatabaseService({this.uid});
   final CollectionReference brewCollection =
-      FirebaseFirestore.instance.collection("brewData");
+      FirebaseFirestore.instance.collection("users");
 
   AppUserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return AppUserData(
