@@ -12,23 +12,23 @@ class DatabaseService {
     return AppUserData(
         uid: uid,
         name: snapshot.get("name"),
-        strength: snapshot.get("strength"),
+        drinkType: snapshot.get("drinkType"),
+        ice: snapshot.get("ice"),
         sugar: snapshot.get("sugar"));
   }
 
-  Future updateUserData(String sugar, String name, int strength) async {
-    await brewCollection.doc(uid).set({
-      "sugar": sugar,
-      "name": name,
-      "strength": strength,
-    });
+  Future updateUserData(
+      String sugar, String name, String drinkType, String ice) async {
+    await brewCollection.doc(uid).set(
+        {"sugar": sugar, "name": name, "drinkType": drinkType, "ice": ice});
   }
 
   List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((brew) {
       return Brew(
         name: brew["name"] ?? "",
-        strength: brew["strength"] ?? 0,
+        drinkType: brew["drinkType"] ?? "",
+        ice: brew["ice"] ?? "",
         sugar: brew["sugar"] ?? "",
       );
     }).toList();

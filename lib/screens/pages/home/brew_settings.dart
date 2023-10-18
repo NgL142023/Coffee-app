@@ -17,9 +17,13 @@ class ShowSettings extends StatefulWidget {
 class _ShowSettingsState extends State<ShowSettings> {
   final _formKey = GlobalKey<FormState>();
   String? _currentName;
-  int? _currentStrength;
+
   String? _currentSugar;
-  List<String> sugars = ['0', '1', '2', '3', '4', '5'];
+  String? _currentIce;
+  String? _currentDrinkType;
+  List<String> sugars = ["0%", "25%", "50%", "75%", "100%"];
+  List<String> ices = ["0%", "25%", "50%", "75%", "100%"];
+  List<String> drinkList = ["cappucino", "expresso", "glace", "latte", "mocha"];
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AppUser>(context);
@@ -31,100 +35,121 @@ class _ShowSettingsState extends State<ShowSettings> {
               key: _formKey,
               child: Container(
                 padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Tên:"),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    TextFormField(
-                      initialValue: snapshot.data!.name,
-                      validator: (value) =>
-                          value!.isEmpty ? "Nhập tên của bạn" : null,
-                      onChanged: (value) => setState(
-                        () {
-                          _currentName = value;
-                        },
+                child: ListView(children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Tên:"),
+                      const SizedBox(
+                        height: 4,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const Text("Số lượng đường:"),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    DropdownButtonFormField(
-                      value: snapshot.data!.sugar,
-                      items: sugars.map((sugar) {
-                        return DropdownMenuItem(
-                          value: sugar,
-                          child: Text("$sugar viên"),
-                        );
-                      }).toList(),
-                      onChanged: (value) => setState(() {
-                        _currentSugar = value as String;
-                      }),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const Text("Độ mạnh:"),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Slider(
-                        min: 100,
-                        max: 900,
-                        divisions: 8,
-                        activeColor: Colors
-                            .blue[_currentStrength ?? snapshot.data!.strength],
-                        inactiveColor: Colors
-                            .blue[_currentStrength ?? snapshot.data!.strength],
-                        label: "Độ mạnh",
-                        value: _currentStrength?.toDouble() ??
-                            snapshot.data!.strength.toDouble(),
-                        onChanged: (value) {
-                          setState(() {
-                            _currentStrength = value.round();
-                          });
-                        }),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Center(
-                      child: Container(
-                        height: 50,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              await DatabaseService(uid: user.uid)
-                                  .updateUserData(
-                                      _currentSugar ?? snapshot.data!.sugar,
-                                      _currentName ?? snapshot.data!.name,
-                                      _currentStrength ??
-                                          snapshot.data!.strength);
-                              // ignore: use_build_context_synchronously
-                              Navigator.pop(context);
-                            }
+                      TextFormField(
+                        maxLength: 45,
+                        initialValue: snapshot.data!.name,
+                        validator: (value) =>
+                            value!.isEmpty ? "Nhập tên của bạn" : null,
+                        onChanged: (value) => setState(
+                          () {
+                            _currentName = value;
                           },
-                          child: Center(
-                            child: Text(
-                              "Cập nhật",
-                              style: Styles.textStyle2,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text("Loại đồ uống:"),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      DropdownButtonFormField(
+                        value: snapshot.data!.drinkType,
+                        items: drinkList.map((drinkType) {
+                          return DropdownMenuItem(
+                            value: drinkType,
+                            child: Text(drinkType),
+                          );
+                        }).toList(),
+                        onChanged: (value) => setState(() {
+                          _currentDrinkType = value as String;
+                        }),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text("Độ ngọt:"),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      DropdownButtonFormField(
+                        value: snapshot.data!.sugar,
+                        items: sugars.map((sugar) {
+                          return DropdownMenuItem(
+                            value: sugar,
+                            child: Text(sugar),
+                          );
+                        }).toList(),
+                        onChanged: (value) => setState(() {
+                          _currentSugar = value as String;
+                        }),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text("Đá:"),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      DropdownButtonFormField(
+                        value: snapshot.data!.ice,
+                        items: ices.map((ice) {
+                          return DropdownMenuItem(
+                            value: ice,
+                            child: Text(ice),
+                          );
+                        }).toList(),
+                        onChanged: (value) => setState(() {
+                          _currentIce = value as String;
+                        }),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: Container(
+                          height: 50,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                await DatabaseService(uid: user.uid)
+                                    .updateUserData(
+                                        _currentSugar ?? snapshot.data!.sugar,
+                                        _currentName ?? snapshot.data!.name,
+                                        _currentDrinkType ??
+                                            snapshot.data!.drinkType,
+                                        _currentIce ?? snapshot.data!.ice);
+
+                                setState(() {});
+                                // ignore: use_build_context_synchronously
+                                Navigator.pop(context);
+                              }
+                            },
+                            child: Center(
+                              child: Text(
+                                "Cập nhật",
+                                style: Styles.textStyle2,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
+                      )
+                    ],
+                  ),
+                ]),
               ),
             );
           } else {

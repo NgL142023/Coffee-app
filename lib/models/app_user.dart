@@ -8,10 +8,13 @@ class AppUserData {
   String? uid;
   String name;
   String sugar;
-  int strength;
+  String drinkType;
+  String ice;
+
   AppUserData(
       {required this.uid,
       required this.name,
-      required this.strength,
+      required this.drinkType,
+      required this.ice,
       required this.sugar});
 }

@@ -17,7 +17,7 @@ class AuthServices {
       UserCredential result = await FirebaseAuth.instance.signInAnonymously();
       User? user = result.user;
       await DatabaseService(uid: user!.uid)
-          .updateUserData("0", "new Anonymous user", 100);
+          .updateUserData("0%", "new Anonymous user", "cappucino", "0%");
       return _userFromFireBaseUser(user);
     } catch (e) {
       return null;
@@ -31,7 +31,7 @@ class AuthServices {
           .createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
       await DatabaseService(uid: user!.uid)
-          .updateUserData("0", "new Email user", 100);
+          .updateUserData("0%", "new Email user", "cappucino", "0%");
       return _userFromFireBaseUser(user);
     } catch (e) {
       return null;
